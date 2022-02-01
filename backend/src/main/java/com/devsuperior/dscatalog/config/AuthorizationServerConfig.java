@@ -51,13 +51,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 	}
-
+	//configura as credenciais da aplicação
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient(clientId).secret(passwordEncoder.encode(clientSecret))
 				.scopes("read", "write").authorizedGrantTypes("password").accessTokenValiditySeconds(jwtDuration);
 	}
-
+	//quem vai authorizar e o formato do token
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		

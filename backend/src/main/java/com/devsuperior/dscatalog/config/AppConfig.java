@@ -14,6 +14,7 @@ public class AppConfig {
 	@Value("${jwt.secret}")
 	private String jwtSecret;
 	
+	//o Bean é um component spring de metodo, nao de classe.
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

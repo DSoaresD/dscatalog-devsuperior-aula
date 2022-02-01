@@ -18,10 +18,13 @@ public class UserInsertValidator implements ConstraintValidator<UserInsertValid,
 	@Autowired
 	private UserRepository repository;
 	
+	
+	//executar alguma logica quando inicializar a validação
 	@Override
 	public void initialize(UserInsertValid ann) {
 	}
 
+	//testa se o objeto UserInsertDTO é valido ou nao
 	@Override
 	public boolean isValid(UserInsertDTO dto, ConstraintValidatorContext context) {
 		
@@ -33,12 +36,12 @@ public class UserInsertValidator implements ConstraintValidator<UserInsertValid,
 			list.add(new FieldMessage("email","Email já existe!"));
 		}
 		
-		
+		//inserindo do FieldMessage para a lista do beans validation
 		for (FieldMessage e : list) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())
 					.addConstraintViolation();
 		}
-		return list.isEmpty();
+		return list.isEmpty(); //se a lista estiver vazia nao há errors
 	}
 }

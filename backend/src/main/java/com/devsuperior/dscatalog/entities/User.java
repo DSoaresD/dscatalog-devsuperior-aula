@@ -38,7 +38,7 @@ public class User implements UserDetails, Serializable {
 	
 	private String password;
 	
-	
+	//quando forem poucos para carregar, pode-se usar o FETCHTYPE.EAGER(é uma exigencia do spring security tb)
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "tb_user_role",

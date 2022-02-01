@@ -18,6 +18,7 @@ import com.devsuperior.dscatalog.resources.exceptions.FieldMessage;
 
 public class UserUpdateValidator implements ConstraintValidator<UserUpdateValid, UserUpdateDTO> {
 	
+	//HttpServletRequest guarda as informaçoes de requisição 
 	@Autowired
 	private HttpServletRequest request;
 	
@@ -34,7 +35,7 @@ public class UserUpdateValidator implements ConstraintValidator<UserUpdateValid,
 		//para tirar os warnings amarelos
 		
 		@SuppressWarnings("unchecked")
-		//obtem as variaveis da url
+		//acessa as variaveis da url
 		var uriVars = (Map<String,String>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		Long userId = Long.parseLong(uriVars.get("id"));
 		

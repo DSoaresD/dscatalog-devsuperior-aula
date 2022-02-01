@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncode);
 
 	}
-
+	//metodo para liberar os endpoints
 	//actuator é uma biblioteca que o spring cloud oauth usa.
 	@Override
 	public void configure(WebSecurity web) throws Exception {
